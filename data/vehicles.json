@@ -14,8 +14,10 @@
     "hp": 155,
     "cargo": 54.4,
     "warr": true,
-    "badges": ["great_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Chevrolet/Trailblazer/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "great_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2021_Chevrolet_Trailblazer_LT_in_Zeus_Bronze_Metallic%2C_Front_Left%2C_12-19-2021.jpg/800px-2021_Chevrolet_Trailblazer_LT_in_Zeus_Bronze_Metallic%2C_Front_Left%2C_12-19-2021.jpg"
   },
   {
     "id": 2,
@@ -32,8 +34,10 @@
     "hp": 180,
     "cargo": 59.8,
     "warr": false,
-    "badges": ["good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2021/Jeep/Compass/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/2022_Jeep_Compass_Limited_2.4L%2C_front_11.17.22.jpg/800px-2022_Jeep_Compass_Limited_2.4L%2C_front_11.17.22.jpg"
   },
   {
     "id": 3,
@@ -50,8 +54,11 @@
     "hp": 158,
     "cargo": 14.8,
     "warr": true,
-    "badges": ["hot_car", "great_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Honda/Civic/Sedan/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "hot_car",
+      "great_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022_Honda_Civic_Touring_in_Meteorite_Gray_Metallic%2C_Front_Left%2C_12-25-2021.jpg/800px-2022_Honda_Civic_Touring_in_Meteorite_Gray_Metallic%2C_Front_Left%2C_12-25-2021.jpg"
   },
   {
     "id": 4,
@@ -68,8 +75,10 @@
     "hp": 203,
     "cargo": 69.8,
     "warr": false,
-    "badges": ["good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2022/Toyota/RAV4/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2019_Toyota_RAV4_XLE_AWD%2C_front_2.22.20.jpg/800px-2019_Toyota_RAV4_XLE_AWD%2C_front_2.22.20.jpg"
   },
   {
     "id": 5,
@@ -86,8 +95,10 @@
     "hp": 181,
     "cargo": 65.4,
     "warr": true,
-    "badges": ["price_drop"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Ford/Escape/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "price_drop"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/2020_Ford_Escape_SEL_in_Magnetic_Metallic%2C_Front_Left%2C_08-04-2022.jpg/800px-2020_Ford_Escape_SEL_in_Magnetic_Metallic%2C_Front_Left%2C_08-04-2022.jpg"
   },
   {
     "id": 6,
@@ -104,8 +115,10 @@
     "hp": 201,
     "cargo": 74.1,
     "warr": false,
-    "badges": ["great_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2022/Nissan/Rogue/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "great_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/2021_Nissan_Rogue_SV%2C_front_11.22.20.jpg/800px-2021_Nissan_Rogue_SV%2C_front_11.22.20.jpg"
   },
   {
     "id": 7,
@@ -122,8 +135,10 @@
     "hp": 187,
     "cargo": 74.1,
     "warr": true,
-    "badges": ["hot_car"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Hyundai/Tucson/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "hot_car"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Hyundai_Tucson_1.6_T-GDI_Hybrid_4WD_Prime_%28NX4%29_%E2%80%93_f_07082021.jpg/800px-Hyundai_Tucson_1.6_T-GDI_Hybrid_4WD_Prime_%28NX4%29_%E2%80%93_f_07082021.jpg"
   },
   {
     "id": 8,
@@ -140,8 +155,11 @@
     "hp": 355,
     "cargo": 89.1,
     "warr": false,
-    "badges": ["great_deal", "hot_car"],
-    "img": "https://images.dealer.com/ddc/vehicles/2022/Chevrolet/Silverado%201500/Pickup/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "great_deal",
+      "hot_car"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2022_Chevrolet_Silverado_LTD_LT_Trail_Boss_Crew_Cab_in_Cherry_Red_Tintcoat%2C_Front_Left%2C_03-23-2022.jpg/800px-2022_Chevrolet_Silverado_LTD_LT_Trail_Boss_Crew_Cab_in_Cherry_Red_Tintcoat%2C_Front_Left%2C_03-23-2022.jpg"
   },
   {
     "id": 9,
@@ -158,8 +176,10 @@
     "hp": 255,
     "cargo": 17.0,
     "warr": true,
-    "badges": ["hot_car"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/BMW/3%20Series/Sedan/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "hot_car"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/2019_BMW_330i_M_Sport_automatic_2.0_Front.jpg/800px-2019_BMW_330i_M_Sport_automatic_2.0_Front.jpg"
   },
   {
     "id": 10,
@@ -176,8 +196,10 @@
     "hp": 184,
     "cargo": 73.5,
     "warr": true,
-    "badges": ["good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Volkswagen/Tiguan/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/VW_Tiguan_II_Facelift_IMG_5765.jpg/800px-VW_Tiguan_II_Facelift_IMG_5765.jpg"
   },
   {
     "id": 11,
@@ -194,8 +216,11 @@
     "hp": 280,
     "cargo": 56.5,
     "warr": false,
-    "badges": ["price_drop", "good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2021/Alfa%20Romeo/Stelvio/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "price_drop",
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/2018_Alfa_Romeo_Stelvio_Ti_AWD%2C_front_6.28.19.jpg/800px-2018_Alfa_Romeo_Stelvio_Ti_AWD%2C_front_6.28.19.jpg"
   },
   {
     "id": 12,
@@ -212,8 +237,10 @@
     "hp": 158,
     "cargo": 14.8,
     "warr": false,
-    "badges": ["good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2022/Honda/Civic/Sedan/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022_Honda_Civic_Touring_in_Meteorite_Gray_Metallic%2C_Front_Left%2C_12-25-2021.jpg/800px-2022_Honda_Civic_Touring_in_Meteorite_Gray_Metallic%2C_Front_Left%2C_12-25-2021.jpg"
   },
   {
     "id": 13,
@@ -230,8 +257,11 @@
     "hp": 270,
     "cargo": 31.7,
     "warr": false,
-    "badges": ["great_deal", "price_drop"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Jeep/Wrangler/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "great_deal",
+      "price_drop"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Jeep_Wrangler_JL_Sahara_2-Door.jpg/800px-Jeep_Wrangler_JL_Sahara_2-Door.jpg"
   },
   {
     "id": 14,
@@ -248,8 +278,10 @@
     "hp": 291,
     "cargo": 86.4,
     "warr": true,
-    "badges": ["hot_car"],
-    "img": "https://images.dealer.com/ddc/vehicles/2025/Hyundai/Palisade/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "hot_car"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/2023_Hyundai_Palisade_Calligraphy_in_Hyper_White%2C_Front_Left%2C_01-14-2023.jpg/800px-2023_Hyundai_Palisade_Calligraphy_in_Hyper_White%2C_Front_Left%2C_01-14-2023.jpg"
   },
   {
     "id": 15,
@@ -266,8 +298,10 @@
     "hp": 310,
     "cargo": 98.2,
     "warr": false,
-    "badges": ["good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2020/Chevrolet/Traverse/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/2020_Chevrolet_Traverse_Premier%2C_front_9.24.19.jpg/800px-2020_Chevrolet_Traverse_Premier%2C_front_9.24.19.jpg"
   },
   {
     "id": 16,
@@ -284,8 +318,11 @@
     "hp": 400,
     "cargo": 52.8,
     "warr": false,
-    "badges": ["hot_car", "price_drop"],
-    "img": "https://images.dealer.com/ddc/vehicles/2022/Ford/F-150/Pickup/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "hot_car",
+      "price_drop"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/2021_Ford_F-150_XLT_Crew_Cab%2C_front_8.14.21.jpg/800px-2021_Ford_F-150_XLT_Crew_Cab%2C_front_8.14.21.jpg"
   },
   {
     "id": 17,
@@ -302,8 +339,10 @@
     "hp": 187,
     "cargo": 59.3,
     "warr": true,
-    "badges": ["great_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Mazda/CX-5/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "great_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/2022_Mazda_CX-5_2.5_Turbo_Signature_in_Machine_Gray%2C_Front_Left%2C_08-28-2022.jpg/800px-2022_Mazda_CX-5_2.5_Turbo_Signature_in_Machine_Gray%2C_Front_Left%2C_08-28-2022.jpg"
   },
   {
     "id": 18,
@@ -320,8 +359,10 @@
     "hp": 203,
     "cargo": 15.1,
     "warr": false,
-    "badges": ["good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2022/Toyota/Camry/Sedan/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2021_Toyota_Camry_SE_Nightshade%2C_front_12.22.20.jpg/800px-2021_Toyota_Camry_SE_Nightshade%2C_front_12.22.20.jpg"
   },
   {
     "id": 19,
@@ -338,8 +379,11 @@
     "hp": 182,
     "cargo": 75.7,
     "warr": true,
-    "badges": ["great_deal", "hot_car"],
-    "img": "https://images.dealer.com/ddc/vehicles/2023/Subaru/Outback/SUV/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "great_deal",
+      "hot_car"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/2020_Subaru_Outback_Limited_XT_in_Crystal_White_Pearl%2C_front_left.jpg/800px-2020_Subaru_Outback_Limited_XT_in_Crystal_White_Pearl%2C_front_left.jpg"
   },
   {
     "id": 20,
@@ -356,7 +400,10 @@
     "hp": 278,
     "cargo": 61.5,
     "warr": false,
-    "badges": ["hot_car", "good_deal"],
-    "img": "https://images.dealer.com/ddc/vehicles/2021/Toyota/Tacoma/Pickup/still/front-left/front-left-1280-en_US.png"
+    "badges": [
+      "hot_car",
+      "good_deal"
+    ],
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/2020_Toyota_Tacoma_TRD_Off-Road_Double_Cab%2C_front_1.5.21.jpg/800px-2020_Toyota_Tacoma_TRD_Off-Road_Double_Cab%2C_front_1.5.21.jpg"
   }
 ]
