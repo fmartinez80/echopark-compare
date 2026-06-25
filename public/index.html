@@ -85,31 +85,36 @@ html, body {
 .tray-cta { width: 100%; padding: 14px; border-radius: var(--radius-md); background: var(--ep-lime); border: none; cursor: pointer; font-size: 13px; font-weight: 900; color: var(--ep-navy); letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 7px; font-family: inherit; opacity: 0.4; pointer-events: none; transition: opacity 0.2s; }
 .tray-cta.go { opacity: 1; pointer-events: all; }
 
-/* VEHICLE GRID */
-.vgrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; padding: 12px 12px 130px; overflow-y: auto; flex: 1; }
-.vcard { background: var(--ep-card); border-radius: var(--radius-lg); overflow: hidden; border: 2px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; cursor: pointer; position: relative; }
-.vcard.s1 { border-color: var(--ep-lime); box-shadow: 0 0 0 1px var(--ep-lime); }
-.vcard.s2 { border-color: #38BDF8; box-shadow: 0 0 0 1px #38BDF8; }
-.vcard-thumb { width: 100%; height: 96px; object-fit: cover; display: block; }
-.vcard-thumb-ph { width: 100%; height: 96px; display: flex; align-items: center; justify-content: center; font-size: 34px; background: linear-gradient(145deg,#1a3a5c,#0D1F36); }
-.vcard-body { padding: 8px 10px 0; }
-.vcard-yr-mk { font-size: 9.5px; font-weight: 700; color: var(--ep-text2); text-transform: uppercase; letter-spacing: 0.5px; }
-.vcard-model { font-size: 13px; font-weight: 900; color: var(--ep-text); line-height: 1.2; margin-top: 1px; }
-.vcard-trim { font-size: 10px; color: var(--ep-muted); margin-top: 1px; }
-.vcard-price { font-size: 16px; font-weight: 900; color: var(--ep-navy); margin-top: 5px; letter-spacing: -0.3px; }
-.vcard-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+/* VEHICLE LIST */
+.vgrid { display: flex; flex-direction: column; gap: 0; padding: 0 0 130px; overflow-y: auto; flex: 1; background: var(--ep-surface); }
+.vcard { background: var(--ep-card); border-bottom: 1px solid var(--ep-border); overflow: hidden; border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s; cursor: pointer; position: relative; padding: 12px 14px; display: flex; flex-direction: column; gap: 0; }
+.vcard.s1 { border-left-color: var(--ep-lime); background: rgba(150,214,0,0.04); }
+.vcard.s2 { border-left-color: #38BDF8; background: rgba(56,189,248,0.04); }
+.vcard-inner { display: flex; gap: 12px; }
+.vcard-img-wrap { width: 140px; height: 100px; flex-shrink: 0; border-radius: var(--radius-md); overflow: hidden; background: #F0F2F5; }
+.vcard-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vcard-thumb-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 34px; background: linear-gradient(145deg,#1a3a5c,#0D1F36); }
+.vcard-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 2px; }
+.vcard-yr-mk { font-size: 10px; font-weight: 700; color: var(--ep-text2); }
+.vcard-model { font-size: 15px; font-weight: 900; color: var(--ep-text); line-height: 1.2; margin-top: 1px; }
+.vcard-trim { font-size: 10.5px; color: var(--ep-muted); margin-top: 1px; }
+.vcard-price { font-size: 20px; font-weight: 900; color: var(--ep-navy); margin-top: 6px; letter-spacing: -0.3px; }
+.vcard-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
 .vbadge { font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 99px; letter-spacing: 0.2px; }
 .vb-deal { background: var(--ep-green-lt); color: var(--ep-green); }
 .vb-hot  { background: #FEF0E6; color: var(--ep-orange); }
 .vb-drop { background: var(--ep-blue-lt); color: var(--ep-blue); }
 .vcard-meta { display: flex; gap: 8px; margin-top: 4px; }
 .vmeta { font-size: 9.5px; color: var(--ep-muted); font-weight: 600; }
-.vcard-foot { padding: 8px 10px 10px; margin-top: 6px; border-top: 1px solid var(--ep-border); }
-.vadd-btn { width: 100%; padding: 7px 4px; border-radius: var(--radius-sm); font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; border: 1.5px solid var(--ep-border2); background: var(--ep-surface); color: var(--ep-text2); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; transition: all 0.15s; font-family: inherit; }
-.vadd-btn.on1 { background: var(--ep-lime); color: var(--ep-navy); border-color: var(--ep-lime); }
-.vadd-btn.on2 { background: #38BDF8; color: var(--ep-navy); border-color: #38BDF8; }
-.vadd-btn.off { cursor: not-allowed; opacity: 0.45; }
-.vsel-dot { position: absolute; top: 7px; right: 7px; width: 21px; height: 21px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; }
+.vcard-compare { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--ep-border); }
+.compare-cb { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.compare-box { width: 20px; height: 20px; border-radius: 4px; border: 2px solid var(--ep-border2); background: var(--ep-white); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; transition: all 0.15s; flex-shrink: 0; }
+.compare-box.on1 { background: var(--ep-lime); border-color: var(--ep-lime); color: var(--ep-navy); }
+.compare-box.on2 { background: #38BDF8; border-color: #38BDF8; color: var(--ep-navy); }
+.compare-box.off { opacity: 0.4; }
+.compare-lbl { font-size: 11px; font-weight: 700; color: var(--ep-text2); text-transform: uppercase; letter-spacing: 0.5px; }
+.compare-lbl.on { color: var(--ep-navy); font-weight: 800; }
+.vsel-dot { position: absolute; top: 10px; right: 12px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; }
 .vsel-dot.d1 { background: var(--ep-lime); color: var(--ep-navy); }
 .vsel-dot.d2 { background: #38BDF8; color: var(--ep-navy); }
 
@@ -429,12 +434,12 @@ function buildGrid(){
   const bf=sel[0]&&sel[1];
   $('vgrid').innerHTML=list.map(v=>{
     const si=selIdx(v),isS=si>=0,isFull=bf&&!isS;
-    let bc='vadd-btn',bt='+ Compare';
-    if(si===0){bc+=' on1';bt='&#10003; Vehicle 1';}
-    else if(si===1){bc+=' on2';bt='&#10003; Vehicle 2';}
-    else if(isFull){bc+=' off';bt='Compare Full';}
+    let boxCls='compare-box',lblCls='compare-lbl',lblTxt='Compare',chkMark='';
+    if(si===0){boxCls+=' on1';lblCls+=' on';lblTxt='Vehicle 1';chkMark='&#10003;';}
+    else if(si===1){boxCls+=' on2';lblCls+=' on';lblTxt='Vehicle 2';chkMark='&#10003;';}
+    else if(isFull){boxCls+=' off';}
     const dot=si===0?'<div class="vsel-dot d1">1</div>':si===1?'<div class="vsel-dot d2">2</div>':'';
-    return '<div class="vcard '+(si===0?'s1':si===1?'s2':'')+'">'+dot+thumb(v,'vcard-thumb',96)+'<div class="vcard-body"><div class="vcard-yr-mk">'+v.year+' '+v.make+'</div><div class="vcard-model">'+v.model+'</div><div class="vcard-trim">'+v.trim+'</div><div class="vcard-price">'+fmt(v.price)+'</div><div class="vcard-badges">'+v.badges.map(badgeHTML).join('')+'</div><div class="vcard-meta"><span class="vmeta">'+fmtM(v.miles)+'</span><span class="vmeta">&middot;</span><span class="vmeta">'+v.drive+'</span></div></div><div class="vcard-foot"><button class="'+bc+'" onclick="toggleSel('+v.id+')">'+bt+'</button></div></div>';
+    return '<div class="vcard '+(si===0?'s1':si===1?'s2':'')+'" onclick="toggleSel('+v.id+')">'+dot+'<div class="vcard-inner"><div class="vcard-img-wrap">'+thumb(v,'vcard-thumb',100)+'</div><div class="vcard-body"><div class="vcard-yr-mk">'+v.year+' &middot; '+fmtM(v.miles)+' &middot; '+v.drive+'</div><div class="vcard-model">'+v.make+' '+v.model+'</div><div class="vcard-trim">'+v.trim+'</div><div class="vcard-price">'+fmt(v.price)+'</div><div class="vcard-badges">'+v.badges.map(badgeHTML).join('')+'</div></div></div><div class="vcard-compare"><label class="compare-cb" onclick="event.stopPropagation()"><div class="'+boxCls+'" onclick="toggleSel('+v.id+')">'+chkMark+'</div><span class="'+lblCls+'">'+lblTxt+'</span></label></div></div>';
   }).join('');
 }
 
