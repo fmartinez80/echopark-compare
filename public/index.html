@@ -59,34 +59,27 @@ html, body {
 .ep-back-btn { background: none; border: none; color: var(--ep-lime); font-size: 12px; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 3px; padding: 0; letter-spacing: 0.3px; font-family: inherit; }
 
 /* BROWSE HEADER - light */
-.browse-nav { background: var(--ep-white); padding: 14px 16px 10px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ep-border); flex-shrink: 0; }
-.browse-nav-title { font-size: 16px; font-weight: 900; color: var(--ep-navy); }
-.browse-nav-icons { display: flex; gap: 14px; align-items: center; }
-.browse-nav-icon { font-size: 16px; color: var(--ep-text2); cursor: pointer; background: none; border: none; }
-.browse-hero { background: var(--ep-white); padding: 10px 16px 12px; flex-shrink: 0; }
-.browse-count { font-size: 12px; color: var(--ep-text2); font-weight: 600; margin-bottom: 10px; }
-.browse-search { background: var(--ep-surface); border: 1.5px solid var(--ep-border); border-radius: var(--radius-md); padding: 10px 13px; display: flex; align-items: center; gap: 9px; }
-.browse-search input { background: none; border: none; outline: none; color: var(--ep-text); font-size: 13px; flex: 1; font-family: inherit; font-weight: 600; }
-.browse-search input::placeholder { color: var(--ep-muted); font-weight: 400; }
-.filter-strip { background: var(--ep-white); padding: 0 16px 12px; display: flex; gap: 7px; overflow-x: auto; flex-shrink: 0; border-bottom: 1px solid var(--ep-border); }
+.browse-nav { background: var(--ep-white); padding: 18px 16px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ep-border); flex-shrink: 0; }
+.browse-nav-title { font-size: 22px; font-weight: 900; color: var(--ep-navy); letter-spacing: -0.3px; }
+.browse-nav-count { font-size: 12px; color: var(--ep-text2); font-weight: 600; }
+.filter-strip { background: var(--ep-white); padding: 10px 16px 12px; display: flex; gap: 7px; overflow-x: auto; flex-shrink: 0; border-bottom: 1px solid var(--ep-border); }
 .filter-strip::-webkit-scrollbar { display: none; }
 .fchip { background: transparent; border: 1.5px solid var(--ep-border2); border-radius: 99px; padding: 5px 13px; font-size: 11.5px; font-weight: 700; color: var(--ep-text2); white-space: nowrap; cursor: pointer; flex-shrink: 0; transition: all 0.15s; font-family: inherit; }
 .fchip.on { background: var(--ep-navy); color: var(--ep-white); border-color: var(--ep-navy); }
 
-/* COMPARE TRAY */
-.compare-tray { position: sticky; bottom: 0; z-index: 30; background: var(--ep-navy2); border-top: 2px solid var(--ep-lime); padding: 11px 14px 16px; transform: translateY(105%); transition: transform 0.32s cubic-bezier(0.4,0,0.2,1); }
-.compare-tray.show { transform: translateY(0); }
+/* COMPARE TRAY - always visible */
+.compare-tray { position: sticky; bottom: 0; z-index: 30; background: var(--ep-white); border-top: 1px solid var(--ep-border); padding: 12px 16px 18px; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); }
 .tray-slots { display: flex; gap: 8px; margin-bottom: 10px; }
-.tray-slot { flex: 1; min-height: 58px; border-radius: var(--radius-md); padding: 8px 10px; border: 1.5px dashed rgba(150,214,0,0.35); background: rgba(255,255,255,0.04); display: flex; align-items: center; gap: 8px; }
-.tray-slot.filled { border-style: solid; border-color: var(--ep-lime); background: rgba(150,214,0,0.07); }
-.slot-num { width: 18px; height: 18px; border-radius: 50%; background: rgba(150,214,0,0.15); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; color: var(--ep-lime); flex-shrink: 0; }
-.slot-num.filled-num { background: var(--ep-lime); color: var(--ep-navy); }
+.tray-slot { flex: 1; min-height: 52px; border-radius: var(--radius-md); padding: 8px 10px; border: 1.5px dashed var(--ep-border2); background: var(--ep-surface); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.tray-slot.filled { border-style: solid; border-color: var(--ep-navy); background: var(--ep-white); }
+.slot-num { width: 20px; height: 20px; border-radius: 50%; background: var(--ep-surface); border: 1.5px solid var(--ep-border2); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; color: var(--ep-muted); flex-shrink: 0; }
+.slot-num.filled-num { background: var(--ep-navy); border-color: var(--ep-navy); color: var(--ep-white); }
 .slot-info { flex: 1; min-width: 0; }
 .slot-empty-txt { font-size: 10.5px; color: var(--ep-muted); font-weight: 600; }
-.slot-car-name { font-size: 10.5px; font-weight: 800; color: var(--ep-white); line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.slot-car-price { font-size: 12px; font-weight: 900; color: var(--ep-lime); margin-top: 1px; }
-.tray-cta { width: 100%; padding: 14px; border-radius: var(--radius-md); background: var(--ep-lime); border: none; cursor: pointer; font-size: 13px; font-weight: 900; color: var(--ep-navy); letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 7px; font-family: inherit; opacity: 0.4; pointer-events: none; transition: opacity 0.2s; }
-.tray-cta.go { opacity: 1; pointer-events: all; }
+.slot-car-name { font-size: 10.5px; font-weight: 800; color: var(--ep-navy); line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.slot-car-price { font-size: 12px; font-weight: 900; color: var(--ep-navy); margin-top: 1px; }
+.tray-cta { width: 100%; padding: 16px; border-radius: var(--radius-md); background: var(--ep-navy); border: none; cursor: pointer; font-size: 14px; font-weight: 900; color: var(--ep-white); letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: inherit; opacity: 0.35; pointer-events: none; transition: all 0.2s; }
+.tray-cta.go { opacity: 1; pointer-events: all; background: var(--ep-lime); color: var(--ep-navy); box-shadow: 0 4px 16px rgba(150,214,0,0.3); }
 
 /* VEHICLE LIST */
 .vgrid { display: flex; flex-direction: column; gap: 0; padding: 0 0 130px; overflow-y: auto; flex: 1; background: var(--ep-surface); }
@@ -266,17 +259,7 @@ input[type=range].epslider::-moz-range-thumb { width: 18px; height: 18px; border
 <div id="s-browse" class="screen active">
   <div class="browse-nav">
     <span class="browse-nav-title">Compare Vehicles</span>
-    <div class="browse-nav-icons">
-      <button class="browse-nav-icon">&#128269;</button>
-      <button class="browse-nav-icon">&#9776;</button>
-    </div>
-  </div>
-  <div class="browse-hero">
-    <div class="browse-count" id="browse-count">Loading...</div>
-    <div class="browse-search">
-      <span style="font-size:14px;color:var(--ep-muted)">&#128269;</span>
-      <input type="text" id="search-in" placeholder="Search make, model, feature..." oninput="doFilter()">
-    </div>
+    <span class="browse-nav-count" id="browse-count">8 vehicles</span>
   </div>
   <div class="filter-strip">
     <button class="fchip on" onclick="setF('All',this)">All</button>
@@ -288,10 +271,10 @@ input[type=range].epslider::-moz-range-thumb { width: 18px; height: 18px; border
   <div class="vgrid" id="vgrid"></div>
   <div class="compare-tray" id="ctray">
     <div class="tray-slots">
-      <div class="tray-slot" id="ts0"><div class="slot-num" id="tsn0">1</div><div class="slot-info" id="tsi0"><span class="slot-empty-txt">Tap + Compare</span></div></div>
-      <div class="tray-slot" id="ts1"><div class="slot-num" id="tsn1">2</div><div class="slot-info" id="tsi1"><span class="slot-empty-txt">Tap + Compare</span></div></div>
+      <div class="tray-slot" id="ts0"><div class="slot-num" id="tsn0">1</div><div class="slot-info" id="tsi0"><span class="slot-empty-txt">Select Vehicle 1</span></div></div>
+      <div class="tray-slot" id="ts1"><div class="slot-num" id="tsn1">2</div><div class="slot-info" id="tsi1"><span class="slot-empty-txt">Select Vehicle 2</span></div></div>
     </div>
-    <button class="tray-cta" id="tray-go" onclick="goStep('priorities')">&#9733; Compare These Vehicles</button>
+    <button class="tray-cta" id="tray-go" onclick="goStep('priorities')">Compare Selected Vehicles</button>
   </div>
 </div>
 
@@ -430,9 +413,8 @@ function badgeHTML(b){
 function selIdx(v){if(sel[0]&&sel[0].id===v.id)return 0;if(sel[1]&&sel[1].id===v.id)return 1;return -1;}
 
 function buildGrid(){
-  const q=$('search-in').value.toLowerCase();
-  const list=INV.filter(v=>(curF==='All'||v.body===curF)&&(!q||(v.year+' '+v.make+' '+v.model+' '+v.trim).toLowerCase().includes(q)));
-  $('browse-count').textContent=list.length.toLocaleString()+' vehicles'+(curF!=='All'?' &middot; '+curF:'')+(q?' matching "'+q+'"':'');
+  const list=INV.filter(v=>curF==='All'||v.body===curF);
+  $('browse-count').textContent=list.length+' vehicles';
   const bf=sel[0]&&sel[1];
   $('vgrid').innerHTML=list.map(v=>{
     const si=selIdx(v),isS=si>=0,isFull=bf&&!isS;
@@ -453,18 +435,15 @@ function toggleSel(id){
 }
 
 function updateTray(){
-  const has=sel[0]||sel[1];
-  $('ctray').classList.toggle('show',!!has);
   [0,1].forEach(i=>{
     const v=sel[i],slot=$('ts'+i),num=$('tsn'+i),info=$('tsi'+i);
     if(v){slot.classList.add('filled');num.className='slot-num filled-num';num.textContent=i+1;info.innerHTML='<div class="slot-car-name">'+v.year+' '+v.make+' '+v.model+'</div><div class="slot-car-price">'+fmt(v.price)+'</div>';}
-    else{slot.classList.remove('filled');num.className='slot-num';num.textContent=i+1;info.innerHTML='<span class="slot-empty-txt">Tap + Compare</span>';}
+    else{slot.classList.remove('filled');num.className='slot-num';num.textContent=i+1;info.innerHTML='<span class="slot-empty-txt">Select Vehicle '+(i+1)+'</span>';}
   });
   $('tray-go').classList.toggle('go',!!(sel[0]&&sel[1]));
 }
 
 function setF(f,el){curF=f;document.querySelectorAll('.fchip').forEach(c=>c.classList.remove('on'));el.classList.add('on');buildGrid();}
-function doFilter(){buildGrid();}
 
 function buildPrios(){
   const[v1,v2]=sel;if(!v1||!v2)return;
