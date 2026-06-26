@@ -144,7 +144,8 @@ input[type=range].epslider::-moz-range-thumb { width: 22px; height: 22px; border
 .gen-btn { width: 100%; padding: 16px; border-radius: 99px; background: var(--ep-navy); border: 2px solid var(--ep-lime); cursor: pointer; font-size: 13px; font-weight: 900; color: var(--ep-white); letter-spacing: 0.5px; text-transform: uppercase; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: none; }
 
 /* COMPARISON */
-.comp-header { background: var(--ep-white); padding: 14px 16px 10px; flex-shrink: 0; position: sticky; top: 0; z-index: 10; }
+#s-comparison.active { height: 844px; overflow: hidden; min-height: 0; }
+.comp-header { background: var(--ep-white); padding: 14px 16px 10px; flex-shrink: 0; z-index: 10; }
 .comp-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 .comp-nav .ep-back-btn { color: var(--ep-navy); }
 .comp-nav .ep-logo-text { color: var(--ep-navy); font-size: 14px; font-weight: 900; letter-spacing: 0; }
@@ -190,7 +191,7 @@ input[type=range].epslider::-moz-range-thumb { width: 22px; height: 22px; border
 .comp-vb-price { font-size: 14px; font-weight: 900; color: var(--ep-navy); margin-top: 4px; }
 
 /* SPEC ROWS */
-.spec-scroll { flex: 1; overflow-y: auto; background: var(--ep-white); }
+.spec-scroll { flex: 1; overflow-y: auto; background: var(--ep-white); min-height: 0; }
 .sec-div { padding: 16px 16px 6px; display: flex; align-items: center; gap: 8px; }
 .sec-div-lbl { font-size: 9px; font-weight: 900; color: var(--ep-muted); text-transform: uppercase; letter-spacing: 1.2px; white-space: nowrap; }
 .sec-div-line { flex: 1; height: 1px; background: var(--ep-border); }
