@@ -36,6 +36,86 @@ app.get('/api/vehicles/:id', (req, res) => {
   res.json(v);
 });
 
+// ─── API: AI Recommendation ──────────────────────────────────────────────────
+
+app.post('/api/recommend', async (req, res) => {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey || apiKey === 'your_api_key_here') {
+    return res.status(503).json({ error: 'API key not configured' });
+  }
+
+  const { vehicle1, vehicle2, priorities } = req.body;
+  if (!vehicle1 || !vehicle2 || !priorities) {
+    return res.status(400).json({ error: 'vehicle1, vehicle2, and priorities are required' });
+  }
+
+  const formatVehicle = (v) => `
+${v.year} ${v.make} ${v.model} ${v.trim}
+- Price: $${v.price.toLocaleString()}
+- Mileage: ${v.miles.toLocaleString()} miles
+- Drivetrain: ${v.drive}
+- Body Style: ${v.body}
+- Exterior Color: ${v.color}
+- Fuel Economy: ${v.mpg} MPG
+- Horsepower: ${v.hp} HP
+- Cargo Space: ${v.cargo} cu.ft.
+- Factory Warranty: ${v.warr ? 'Active' : 'Expired'}
+- Badges: ${v.badges.length ? v.badges.join(', ') : 'None'}
+- VIN: ${v.vin}`;
+
+  const priorityLabels = { price: 'Price', safety: 'Safety', mpg: 'Fuel Economy', storage: 'Storage' };
+  const weightLabels = ['Less Important', 'Somewhat', 'Neutral', 'Important', 'Most Important'];
+  const prioText = Object.entries(priorities)
+    .filter(([k]) => priorityLabels[k])
+    .map(([k, v]) => `${priorityLabels[k]}: ${weightLabels[v]} (${v}/4)`)
+    .join('\n');
+
+  const system = `You are EchoPark Automotive's vehicle comparison advisor. You help customers decide between two used vehicles based on their stated priorities. Be warm, knowledgeable, and concise. Write in a friendly but authoritative tone — like a trusted friend who knows cars. Do NOT use bullet points, headers, or markdown. Write 2-3 short flowing sentences as a single paragraph. Do NOT start with "Based on your priorities" or similar. Jump straight into the recommendation. Always name the specific vehicle you recommend.`;
+
+  const userMsg = `Compare these two vehicles for a customer. Consider ALL vehicle details but weight your recommendation according to the customer's priorities.
+
+VEHICLE 1:${formatVehicle(vehicle1)}
+
+VEHICLE 2:${formatVehicle(vehicle2)}
+
+CUSTOMER PRIORITIES:
+${prioText}
+
+Which vehicle do you recommend and why? Remember: 2-3 sentences, single paragraph, no markdown.`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 200,
+        system,
+        messages: [{ role: 'user', content: userMsg }],
+      }),
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      return res.status(response.status).json({
+        error: `Anthropic API error: ${response.status}`,
+        message: err.error?.message || response.statusText
+      });
+    }
+
+    const data = await response.json();
+    const text = data.content?.[0]?.text || '';
+    res.json({ recommendation: text });
+  } catch (e) {
+    console.error('Recommend error:', e.message);
+    res.status(500).json({ error: 'Internal server error', message: e.message });
+  }
+});
+
 // ─── API: AI Chat (Anthropic Proxy) ─────────────────────────────────────────
 
 app.post('/api/chat', async (req, res) => {

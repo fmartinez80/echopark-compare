@@ -71,7 +71,8 @@ html, body {
 .compare-tray { position: sticky; bottom: 0; z-index: 30; background: var(--ep-white); border-top: 1px solid var(--ep-border); padding: 12px 16px 18px; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); }
 .tray-slots { display: flex; gap: 8px; margin-bottom: 10px; }
 .tray-slot { flex: 1; min-height: 52px; border-radius: var(--radius-md); padding: 8px 10px; border: 1.5px dashed var(--ep-border2); background: var(--ep-surface); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
-.tray-slot.filled { border-style: solid; border-color: var(--ep-navy); background: var(--ep-white); }
+.tray-slot.filled { border-style: solid; border-color: var(--ep-navy); background: var(--ep-white); position: relative; }
+.tray-remove { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; background: var(--ep-muted); border: 2px solid var(--ep-white); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; color: var(--ep-white); cursor: pointer; line-height: 1; z-index: 2; }
 .slot-num { width: 20px; height: 20px; border-radius: 50%; background: var(--ep-surface); border: 1.5px solid var(--ep-border2); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; color: var(--ep-muted); flex-shrink: 0; }
 .slot-num.filled-num { background: var(--ep-navy); border-color: var(--ep-navy); color: var(--ep-white); }
 .slot-info { flex: 1; min-width: 0; }
@@ -437,8 +438,8 @@ function toggleSel(id){
 function updateTray(){
   [0,1].forEach(i=>{
     const v=sel[i],slot=$('ts'+i),num=$('tsn'+i),info=$('tsi'+i);
-    if(v){slot.classList.add('filled');num.className='slot-num filled-num';num.textContent=i+1;info.innerHTML='<div class="slot-car-name">'+v.year+' '+v.make+' '+v.model+'</div><div class="slot-car-price">'+fmt(v.price)+'</div>';}
-    else{slot.classList.remove('filled');num.className='slot-num';num.textContent=i+1;info.innerHTML='<span class="slot-empty-txt">Select Vehicle '+(i+1)+'</span>';}
+    if(v){slot.classList.add('filled');num.className='slot-num filled-num';num.textContent=i+1;info.innerHTML='<div class="slot-car-name">'+v.year+' '+v.make+' '+v.model+'</div><div class="slot-car-price">'+fmt(v.price)+'</div>';if(!slot.querySelector('.tray-remove')){const x=document.createElement('div');x.className='tray-remove';x.textContent='\u2715';x.onclick=function(e){e.stopPropagation();sel[i]=null;updateTray();buildGrid();};slot.appendChild(x);}}
+    else{slot.classList.remove('filled');num.className='slot-num';num.textContent=i+1;info.innerHTML='<span class="slot-empty-txt">Select Vehicle '+(i+1)+'</span>';const rx=slot.querySelector('.tray-remove');if(rx)rx.remove();}
   });
   $('tray-go').classList.toggle('go',!!(sel[0]&&sel[1]));
 }
@@ -473,19 +474,30 @@ function computeResult(){
   return{winner:p1>p2?'v1':p1<p2?'v2':'tie',p1,p2,dims};
 }
 
-function buildVerdictLines(v1,v2,res){
-  const top=[...PRIOS].sort((a,b)=>wts[b.key]-wts[a.key])[0];
-  if(res.winner==='tie')return['Both vehicles score evenly across your priorities.','The '+v1.model+' leads on fuel economy at '+v1.mpg+' MPG.','The '+v2.model+' counters with '+v2.drive+' and '+v2.cargo+' cu.ft. cargo.','Adjust a priority slider above to break the tie.'];
-  if(res.winner==='v1')return['The '+v1.year+' '+v1.make+' '+v1.model+' is the stronger match.',fmtM(v1.miles)+' of use and '+(v1.warr?'an active factory warranty':'strong value at this price point')+'.','Leads on '+top.label.toLowerCase()+' \u2014 '+v1.mpg+' MPG'+(v1.drive!=='FWD'?' with '+v1.drive+' capability':'')+'.','The '+v2.model+' offers more cargo ('+v2.cargo+' cu.ft.) and '+v2.drive+'.'];
-  return['The '+v2.year+' '+v2.make+' '+v2.model+' is the stronger match.',v2.drive+' and '+v2.cargo+' cu.ft. cargo stand out for your priorities.','At '+fmt(v2.price)+(v1.price>v2.price?' \u2014 saving $'+(v1.price-v2.price).toLocaleString()+' upfront':'')+'.','The '+v1.model+' wins on fuel economy at '+v1.mpg+' MPG'+(v1.warr?' with an active warranty':'')+'.'];
-}
-
+let recTimer=null;
 function renderVerdict(){
   const[v1,v2]=sel,res=computeResult();if(!res)return;
-  const lines=buildVerdictLines(v1,v2,res);
   const w=res.winner==='v1'?v1:res.winner==='v2'?v2:null;
   const winnerName=w?(w.year+' '+w.make+' '+w.model):'It\'s a Tie';
-  $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-winner">'+winnerName+'</div><div class="verdict-lines"><p>'+lines.join(' ')+'</p></div></div>';
+  $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-winner">'+winnerName+'</div><div class="verdict-lines"><p style="color:var(--ep-muted);font-style:italic">Generating recommendation...</p></div></div>';
+  if(recTimer)clearTimeout(recTimer);
+  recTimer=setTimeout(()=>fetchRecommendation(v1,v2,winnerName),400);
+}
+
+async function fetchRecommendation(v1,v2,winnerName){
+  try{
+    const resp=await fetch('/api/recommend',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({vehicle1:v1,vehicle2:v2,priorities:wts})
+    });
+    if(!resp.ok)throw new Error('API error');
+    const data=await resp.json();
+    $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-winner">'+winnerName+'</div><div class="verdict-lines"><p>'+data.recommendation+'</p></div></div>';
+  }catch(e){
+    console.error('Recommendation failed:',e);
+    $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-winner">'+winnerName+'</div><div class="verdict-lines"><p>Adjust the priority sliders above to refine your comparison.</p></div></div>';
+  }
 }
 
 function renderVehiclesBelow(){
