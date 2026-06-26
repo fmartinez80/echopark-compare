@@ -221,6 +221,26 @@ input[type=range].epslider::-moz-range-thumb { width: 22px; height: 22px; border
 .cta-new .t { font-size:12px; font-weight:800; color:var(--ep-navy); letter-spacing:0.3px; text-transform:uppercase; }
 .dismiss { padding:12px 24px 18px; text-align:center; font-size:10px; color:var(--ep-muted); }
 
+/* TEST DRIVE MODAL */
+.td-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:100; align-items:center; justify-content:center; }
+.td-overlay.open { display:flex; }
+.td-modal { background:var(--ep-white); border-radius:14px; width:300px; max-width:90%; padding:28px 24px 24px; text-align:center; box-shadow:0 12px 40px rgba(0,0,0,0.2); }
+.td-title { font-size:14px; font-weight:900; color:var(--ep-navy); text-transform:uppercase; letter-spacing:0.3px; margin-bottom:4px; }
+.td-subtitle { font-size:11px; color:var(--ep-muted); font-weight:500; margin-bottom:20px; }
+.td-options { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.td-option { display:flex; align-items:center; gap:10px; padding:12px 14px; border:1.5px solid var(--ep-border2); border-radius:10px; cursor:pointer; transition:all 0.15s; text-align:left; }
+.td-option:hover { border-color:var(--ep-green); }
+.td-option.selected { border-color:var(--ep-green); background:rgba(74,124,16,0.06); }
+.td-radio { width:18px; height:18px; border-radius:50%; border:2px solid var(--ep-border2); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.15s; }
+.td-option.selected .td-radio { border-color:var(--ep-green); }
+.td-radio-dot { width:10px; height:10px; border-radius:50%; background:var(--ep-green); transform:scale(0); transition:transform 0.15s; }
+.td-option.selected .td-radio-dot { transform:scale(1); }
+.td-opt-name { font-size:13px; font-weight:700; color:var(--ep-navy); }
+.td-opt-sub { font-size:10px; color:var(--ep-muted); font-weight:500; margin-top:1px; }
+.td-submit { width:100%; padding:13px; border-radius:99px; background:var(--ep-green); border:none; cursor:pointer; font-size:13px; font-weight:800; color:var(--ep-white); font-family:inherit; text-transform:uppercase; letter-spacing:0.3px; transition:opacity 0.15s; }
+.td-submit:disabled { opacity:0.35; cursor:default; }
+.td-cancel { margin-top:12px; font-size:11px; color:var(--ep-muted); font-weight:600; cursor:pointer; background:none; border:none; font-family:inherit; }
+
 /* CHAT */
 .chat-hdr { background: var(--ep-navy); padding: 11px 14px; flex-shrink: 0; }
 .chat-agent { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
@@ -311,7 +331,7 @@ input[type=range].epslider::-moz-range-thumb { width: 22px; height: 22px; border
     <div id="spec-rows"></div>
     <div class="cta-wrap">
       <button class="cta-p" onclick="goStep('chat')"><span class="t">I Want to Ask Questions About These Cars</span></button>
-      <button class="cta-s"><span class="t">Schedule a Test Drive</span></button>
+      <button class="cta-s" onclick="openTestDriveModal()"><span class="t">Schedule a Test Drive</span></button>
       <button class="cta-new" onclick="goStep('browse')"><span class="t">New Comparison</span></button>
     </div>
   </div>
@@ -339,6 +359,17 @@ input[type=range].epslider::-moz-range-thumb { width: 22px; height: 22px; border
   </div>
 </div>
 
+</div>
+
+<!-- TEST DRIVE MODAL -->
+<div class="td-overlay" id="td-overlay" onclick="if(event.target===this)closeTestDriveModal()">
+  <div class="td-modal">
+    <div class="td-title">Schedule a Test Drive</div>
+    <div class="td-subtitle">Which vehicle would you like to drive?</div>
+    <div class="td-options" id="td-options"></div>
+    <button class="td-submit" id="td-submit" disabled onclick="submitTestDrive()">Schedule Test Drive</button>
+    <button class="td-cancel" onclick="closeTestDriveModal()">Cancel</button>
+  </div>
 </div>
 
 <script>
@@ -560,6 +591,49 @@ function buildComp(){
   const[v1,v2]=sel;if(!v1||!v2)return;
   $('ctx-cars').textContent=v1.make+' '+v1.model+' vs '+v2.make+' '+v2.model;
   renderCompSliders();renderVerdict();renderVehiclesBelow();renderSpecs();
+}
+
+// ─── Test Drive Modal ────────────────────────────────────────────────────────
+
+let tdSelected = null;
+
+function openTestDriveModal() {
+  const [v1, v2] = sel;
+  if (!v1 || !v2) return;
+  tdSelected = null;
+  $('td-submit').disabled = true;
+  $('td-options').innerHTML = [v1, v2].map((v, i) =>
+    '<div class="td-option" onclick="selectTD('+i+')" id="td-opt-'+i+'">'+
+      '<div class="td-radio"><div class="td-radio-dot"></div></div>'+
+      '<div><div class="td-opt-name">'+v.year+' '+v.make+' '+v.model+'</div>'+
+      '<div class="td-opt-sub">'+v.trim+' &middot; '+fmt(v.price)+'</div></div>'+
+    '</div>'
+  ).join('');
+  $('td-overlay').classList.add('open');
+}
+
+function selectTD(i) {
+  tdSelected = i;
+  document.querySelectorAll('.td-option').forEach((el, idx) => {
+    el.classList.toggle('selected', idx === i);
+  });
+  $('td-submit').disabled = false;
+}
+
+function closeTestDriveModal() {
+  $('td-overlay').classList.remove('open');
+  tdSelected = null;
+}
+
+function submitTestDrive() {
+  if (tdSelected === null) return;
+  const v = sel[tdSelected];
+  closeTestDriveModal();
+  if (v.url) {
+    window.open(v.url, '_blank');
+  } else {
+    alert('Test drive requested for ' + v.year + ' ' + v.make + ' ' + v.model + '. An EchoPark team member will reach out shortly.');
+  }
 }
 
 // ─── AI Chat (via server proxy) ──────────────────────────────────────────────
