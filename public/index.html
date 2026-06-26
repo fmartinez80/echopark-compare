@@ -134,16 +134,16 @@ html, body {
 .pcard-name { font-size: 14px; font-weight: 800; color: var(--ep-navy); flex: 1; text-transform: uppercase; letter-spacing: 0.3px; }
 .pcard-chip { font-size: 9px; font-weight: 800; padding: 4px 10px; border-radius: 99px; background: var(--ep-green-lt); color: var(--ep-green); transition: all 0.2s; }
 .pcard-chip.lit { background: var(--ep-green-lt); color: var(--ep-green); }
-input[type=range].epslider { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 99px; outline: none; cursor: pointer; display: block; }
-input[type=range].epslider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--ep-navy); border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-input[type=range].epslider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--ep-navy); border: 3px solid white; }
+input[type=range].epslider { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; border-radius: 99px; outline: none; cursor: pointer; display: block; }
+input[type=range].epslider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #2D4A0E; border: none; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+input[type=range].epslider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #2D4A0E; border: none; }
 .pslider-ends { display: none; }
 .pslider-end { font-size: 9px; color: var(--ep-muted); font-weight: 600; }
 .gen-btn-wrap { padding: 16px 16px 24px; flex-shrink: 0; background: var(--ep-white); }
 .gen-btn { width: 100%; padding: 16px; border-radius: 99px; background: var(--ep-navy); border: 2px solid var(--ep-lime); cursor: pointer; font-size: 13px; font-weight: 900; color: var(--ep-white); letter-spacing: 0.5px; text-transform: uppercase; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: none; }
 
 /* COMPARISON */
-.comp-header { background: var(--ep-white); padding: 14px 16px 14px; flex-shrink: 0; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--ep-border); }
+.comp-header { background: var(--ep-white); padding: 14px 16px 10px; flex-shrink: 0; position: sticky; top: 0; z-index: 10; }
 .comp-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 .comp-nav .ep-back-btn { color: var(--ep-navy); }
 .comp-nav .ep-logo-text { color: var(--ep-navy); font-size: 14px; font-weight: 900; letter-spacing: 0; }
@@ -159,34 +159,31 @@ input[type=range].epslider::-moz-range-thumb { width: 20px; height: 20px; border
 .comp-v-price { font-size: 13px; font-weight: 900; color: var(--ep-navy); margin-top: 3px; }
 .vs-pill { display: none; }
 
+/* TOGGLE SWITCH */
+.ai-toggle-sw { width: 44px; height: 24px; border-radius: 99px; background: var(--ep-border2); border: none; cursor: pointer; position: relative; transition: background 0.2s; flex-shrink: 0; }
+.ai-toggle-sw.on { background: var(--ep-green); }
+.ai-toggle-sw::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: var(--ep-white); transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.ai-toggle-sw.on::after { transform: translateX(20px); }
 /* AI SUMMARY */
-.ai-summary-wrap { background: var(--ep-white); flex-shrink: 0; border-bottom: 1px solid var(--ep-border); }
-.ai-toggle-btn { width: 100%; display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; }
-.ai-toggle-accent { width: 3px; height: 18px; border-radius: 2px; background: var(--ep-green); flex-shrink: 0; }
-.ai-toggle-label { font-size: 12px; font-weight: 900; color: var(--ep-navy); text-transform: uppercase; letter-spacing: 0.5px; flex: 1; }
-.ai-toggle-chips { display: flex; gap: 4px; }
-.ai-chip-mini { font-size: 9px; font-weight: 800; padding: 3px 9px; border-radius: 99px; background: var(--ep-green-lt); color: var(--ep-green); white-space: nowrap; }
-.ai-chevron { font-size: 14px; color: var(--ep-muted); transition: transform 0.22s; flex-shrink: 0; }
-.ai-chevron.open { transform: rotate(180deg); }
+.ai-summary-wrap { background: var(--ep-white); flex-shrink: 0; }
 .ai-body { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
-.ai-body.open { max-height: 800px; }
-.comp-sliders-wrap { padding: 8px 16px 14px; }
-.cslider-row { padding: 6px 0; }
-.cslider-lrow { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.cslider-icon { display: none; }
-.cslider-name { font-size: 13px; font-weight: 800; color: var(--ep-navy); flex: 1; }
-.cslider-val { font-size: 10px; font-weight: 700; color: var(--ep-green); min-width: 80px; text-align: right; }
-.cslider-val.lit { color: var(--ep-green); }
-.verdict-wrap { padding: 14px 16px 16px; border-top: 1px solid var(--ep-border); }
-.verdict-card { border-radius: var(--radius-md); padding: 16px; border-left: 4px solid var(--ep-green); background: var(--ep-surface); border-top: 1px solid var(--ep-border); border-right: 1px solid var(--ep-border); border-bottom: 1px solid var(--ep-border); }
-.verdict-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-.verdict-bar-lbl { font-size: 9px; font-weight: 800; color: var(--ep-text2); white-space: nowrap; }
-.verdict-track { flex: 1; height: 6px; background: var(--ep-border); border-radius: 3px; overflow: hidden; display: flex; }
-.vbar-l { height: 100%; transition: width 0.4s ease; }
-.vbar-r { flex: 1; height: 100%; }
-.verdict-ttl { font-size: 14px; font-weight: 900; color: var(--ep-navy); text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
-.verdict-lines p { font-size: 12px; line-height: 1.6; margin-bottom: 4px; color: var(--ep-text2); }
-.verdict-lines p.bold { font-weight: 800; color: var(--ep-navy); font-size: 13px; }
+.ai-body.open { max-height: 900px; }
+.comp-sliders-wrap { padding: 16px 16px 8px; }
+.cslider-row { padding: 8px 0; }
+.cslider-lrow { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.cslider-name { font-size: 13px; font-weight: 800; color: var(--ep-navy); flex: 1; text-transform: uppercase; letter-spacing: 0.3px; }
+.verdict-wrap { padding: 8px 16px 16px; }
+.verdict-card { border-radius: 0; padding: 20px; border-left: 4px solid var(--ep-green); background: var(--ep-surface); border-top: none; border-right: none; border-bottom: none; }
+.verdict-ttl { font-size: 20px; font-weight: 800; color: var(--ep-navy); text-transform: none; letter-spacing: -0.3px; margin-bottom: 12px; font-style: italic; }
+.verdict-lines p { font-size: 13px; line-height: 1.65; margin-bottom: 0; color: var(--ep-text2); }
+.verdict-lines p.bold { font-weight: 600; color: var(--ep-text2); font-size: 13px; }
+/* VEHICLE INFO BELOW VERDICT */
+.comp-vehicles-below { display: flex; gap: 0; padding: 20px 16px 16px; border-bottom: 1px solid var(--ep-border); background: var(--ep-white); }
+.comp-vb { flex: 1; text-align: center; }
+.comp-vb-year-make { font-size: 12px; font-weight: 800; color: var(--ep-navy); }
+.comp-vb-model { font-size: 11px; font-weight: 700; color: var(--ep-navy); }
+.comp-vb-sub { font-size: 9px; color: var(--ep-muted); margin-top: 2px; }
+.comp-vb-price { font-size: 14px; font-weight: 900; color: var(--ep-navy); margin-top: 4px; }
 
 /* SPEC ROWS */
 .spec-scroll { flex: 1; overflow-y: auto; background: var(--ep-white); }
@@ -296,28 +293,20 @@ input[type=range].epslider::-moz-range-thumb { width: 20px; height: 20px; border
   <div class="comp-header">
     <div class="comp-nav">
       <div><div style="font-size:14px;font-weight:900;color:var(--ep-navy)">Vehicle Comparison</div><div style="font-size:10px;color:var(--ep-muted);font-weight:600">Side &middot; by &middot; Side</div></div>
-      <div style="width:48px"></div>
+      <button class="ai-toggle-sw on" id="ai-toggle-sw" onclick="toggleAI()"></button>
     </div>
-    <div class="comp-v-row" id="comp-v-row"></div>
   </div>
   <div class="ai-summary-wrap">
-    <button class="ai-toggle-btn" onclick="toggleAI()">
-      <div class="ai-toggle-accent"></div>
-      <span class="ai-toggle-label">AI Summary</span>
-      <div class="ai-toggle-chips" id="ai-chips"></div>
-      <span class="ai-chevron open" id="ai-chev">&#9662;</span>
-    </button>
     <div class="ai-body open" id="ai-body">
       <div class="comp-sliders-wrap" id="comp-sliders"></div>
       <div class="verdict-wrap" id="verdict-wrap"></div>
     </div>
   </div>
+  <div class="comp-vehicles-below" id="comp-vehicles-below"></div>
   <div class="spec-scroll">
     <div id="spec-rows"></div>
     <div class="cta-wrap">
-      <button class="cta-p" onclick="goStep('chat')"><span class="t">I Want to Ask Questions About These Cars</span></button>
-      <button class="cta-s"><span class="t">Schedule a Test Drive</span></button>
-      <button class="cta-new" onclick="goStep('browse')"><span class="t">New Comparison</span></button>
+      <button class="cta-new" onclick="goStep('comparison')" style="background:var(--ep-green)"><span class="t" style="color:var(--ep-white)">Generate My Assessment</span></button>
     </div>
   </div>
 </div>
@@ -352,7 +341,6 @@ const PRIOS=[
   {key:'price',label:'Price',icon:''},
   {key:'safety',label:'Safety',icon:''},
   {key:'mpg',label:'Fuel Economy',icon:''},
-  {key:'value',label:'Overall Value',icon:''},
   {key:'storage',label:'Storage',icon:''},
 ];
 const ICONS={SUV:'',Sedan:'',Truck:'',Hatchback:'',Coupe:''};
@@ -485,44 +473,35 @@ function buildVerdictLines(v1,v2,res){
 
 function renderVerdict(){
   const[v1,v2]=sel,res=computeResult();if(!res)return;
-  const lines=buildVerdictLines(v1,v2,res),tot=res.p1+res.p2,lp=Math.round(res.p1/tot*100);
-  const v1w=res.winner==='v1',v2w=res.winner==='v2';
-  $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-bar"><span class="verdict-bar-lbl">'+v1.make+'</span><div class="verdict-track"><div class="vbar-l" style="width:'+lp+'%;background:'+(v1w?'var(--ep-green)':'#C8D5E0')+'"></div><div class="vbar-r" style="background:'+(v2w?'var(--ep-green)':'var(--ep-border)')+'"></div></div><span class="verdict-bar-lbl">'+v2.make+'</span></div><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-lines">'+lines.map((l,i)=>'<p '+(i===0?'class="bold"':'')+'>'+l+'</p>').join('')+'</div></div>';
+  const lines=buildVerdictLines(v1,v2,res);
+  $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-lines"><p>'+lines.join(' ')+'</p></div></div>';
 }
 
-function renderCompHeader(){
-  const[v1,v2]=sel;
-  $('comp-v-row').innerHTML='<div class="comp-vcard">'+thumb(v1,'comp-vcard-thumb',72)+'<div class="comp-vcard-body"><div class="comp-v-name">'+v1.year+' '+v1.make+'</div><div class="comp-v-name">'+v1.model+'</div><div class="comp-v-sub">'+fmtM(v1.miles)+' &middot; '+v1.drive+'</div><div class="comp-v-price">'+fmt(v1.price)+'</div></div></div><div class="comp-vcard">'+thumb(v2,'comp-vcard-thumb',72)+'<div class="comp-vcard-body"><div class="comp-v-name">'+v2.year+' '+v2.make+'</div><div class="comp-v-name">'+v2.model+'</div><div class="comp-v-sub">'+fmtM(v2.miles)+' &middot; '+v2.drive+'</div><div class="comp-v-price">'+fmt(v2.price)+'</div></div></div>';
+function renderVehiclesBelow(){
+  const[v1,v2]=sel;if(!v1||!v2)return;
+  $('comp-vehicles-below').innerHTML='<div class="comp-vb"><div class="comp-vb-year-make">'+v1.year+' '+v1.make+'</div><div class="comp-vb-model">'+v1.model+'</div><div class="comp-vb-sub">'+fmtM(v1.miles)+' &middot; '+v1.drive+'</div><div class="comp-vb-price">'+fmt(v1.price)+'</div></div><div class="comp-vb"><div class="comp-vb-year-make">'+v2.year+' '+v2.make+'</div><div class="comp-vb-model">'+v2.model+'</div><div class="comp-vb-sub">'+fmtM(v2.miles)+' &middot; '+v2.drive+'</div><div class="comp-vb-price">'+fmt(v2.price)+'</div></div>';
 }
 
 function renderCompSliders(){
   const cont=$('comp-sliders');cont.innerHTML='';
   PRIOS.forEach(p=>{
-    const w=wts[p.key],pct=(w/4)*100,fc=w===2?'#C8D5E0':w>2?'#96D600':'#8FA3B1';
+    const w=wts[p.key],pct=(w/4)*100,fc=w===2?'#C8D5E0':w>2?'#4A7C10':'#8FA3B1';
     const row=document.createElement('div');row.className='cslider-row';
-    row.innerHTML='<div class="cslider-lrow"><span class="cslider-icon">'+p.icon+'</span><span class="cslider-name">'+p.label+'</span><span class="cslider-val '+(w!==2?'lit':'')+'" id="csv-'+p.key+'">'+VLABELS[w]+'</span></div><input type="range" class="epslider" min="0" max="4" step="1" value="'+w+'" style="background:linear-gradient(to right,'+fc+' '+pct+'%,#E0E6ED '+pct+'%)" oninput="updComp(\''+p.key+'\',+this.value,this)">';
+    row.innerHTML='<div class="cslider-lrow"><span class="cslider-name">'+p.label+'</span></div><input type="range" class="epslider" min="0" max="4" step="1" value="'+w+'" style="background:linear-gradient(to right,'+fc+' '+pct+'%,#E0E6ED '+pct+'%)" oninput="updComp(\''+p.key+'\',+this.value,this)">';
     cont.appendChild(row);
   });
 }
 
 function updComp(key,val,el){
-  wts[key]=val;const fc=val===2?'#C8D5E0':val>2?'#96D600':'#8FA3B1';
+  wts[key]=val;const fc=val===2?'#C8D5E0':val>2?'#4A7C10':'#8FA3B1';
   el.style.background='linear-gradient(to right,'+fc+' '+(val/4*100)+'%,#E0E6ED '+(val/4*100)+'%)';
-  const c=$('csv-'+key);if(c){c.textContent=VLABELS[val];c.className='cslider-val'+(val!==2?' lit':'');}
-  renderVerdict();renderCompHeader();updateAIChips();
-}
-
-function updateAIChips(){
-  const res=computeResult();if(!res)return;
-  const w=res.winner==='v1'?sel[0]:res.winner==='v2'?sel[1]:null;
-  $('ai-chips').innerHTML=w?'<span class="ai-chip-mini">'+w.make+' '+w.model+'</span>':'';
+  renderVerdict();renderVehiclesBelow();
 }
 
 function toggleAI(){
   aiOpen=!aiOpen;
   $('ai-body').classList.toggle('open',aiOpen);
-  $('ai-chev').classList.toggle('open',aiOpen);
-  updateAIChips();
+  $('ai-toggle-sw').classList.toggle('on',aiOpen);
 }
 
 function renderSpecs(){
@@ -555,7 +534,7 @@ function renderSpecs(){
 function buildComp(){
   const[v1,v2]=sel;if(!v1||!v2)return;
   $('ctx-cars').textContent=v1.make+' '+v1.model+' vs '+v2.make+' '+v2.model;
-  renderCompHeader();renderCompSliders();renderVerdict();renderSpecs();updateAIChips();
+  renderCompSliders();renderVerdict();renderVehiclesBelow();renderSpecs();
 }
 
 // ─── AI Chat (via server proxy) ──────────────────────────────────────────────
