@@ -150,43 +150,43 @@ input[type=range].epslider::-moz-range-thumb { width: 20px; height: 20px; border
 .comp-v-row { display: flex; align-items: flex-start; gap: 6px; }
 .comp-vcard { flex: 1; border-radius: 0; overflow: hidden; border: none; background: var(--ep-white); text-align: center; }
 .comp-vcard.winner { background: var(--ep-white); }
-.comp-vcard-thumb { width: 100%; height: 72px; object-fit: contain; display: block; }
-.comp-vcard-thumb-ph { width: 100%; height: 72px; display: flex; align-items: center; justify-content: center; font-size: 30px; background: var(--ep-surface); }
-.comp-vcard-body { padding: 6px 4px 4px; }
+.comp-vcard-thumb { width: 100%; height: 80px; object-fit: cover; display: block; border-radius: 6px; }
+.comp-vcard-thumb-ph { width: 100%; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 16px; background: var(--ep-surface); border-radius: 6px; color: var(--ep-muted); }
+.comp-vcard-body { padding: 8px 4px 4px; }
 .comp-ai-badge { display: none; }
-.comp-v-name { font-size: 10px; font-weight: 800; color: var(--ep-navy); line-height: 1.3; }
-.comp-v-sub { font-size: 9px; color: var(--ep-muted); margin-top: 1px; }
-.comp-v-price { font-size: 11px; font-weight: 800; color: var(--ep-text2); margin-top: 2px; }
+.comp-v-name { font-size: 11px; font-weight: 800; color: var(--ep-navy); line-height: 1.3; }
+.comp-v-sub { font-size: 9px; color: var(--ep-muted); margin-top: 2px; }
+.comp-v-price { font-size: 13px; font-weight: 900; color: var(--ep-navy); margin-top: 3px; }
 .vs-pill { display: none; }
 
 /* AI SUMMARY */
 .ai-summary-wrap { background: var(--ep-white); flex-shrink: 0; border-bottom: 1px solid var(--ep-border); }
-.ai-toggle-btn { width: 100%; display: flex; align-items: center; gap: 9px; padding: 11px 14px; background: none; border: none; cursor: pointer; border-bottom: 1px solid var(--ep-border); text-align: left; font-family: inherit; }
-.ai-toggle-accent { width: 3px; height: 16px; border-radius: 2px; background: var(--ep-lime); flex-shrink: 0; }
-.ai-toggle-label { font-size: 10px; font-weight: 900; color: var(--ep-text); text-transform: uppercase; letter-spacing: 1px; flex: 1; }
+.ai-toggle-btn { width: 100%; display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; }
+.ai-toggle-accent { width: 3px; height: 18px; border-radius: 2px; background: var(--ep-green); flex-shrink: 0; }
+.ai-toggle-label { font-size: 12px; font-weight: 900; color: var(--ep-navy); text-transform: uppercase; letter-spacing: 0.5px; flex: 1; }
 .ai-toggle-chips { display: flex; gap: 4px; }
-.ai-chip-mini { font-size: 8.5px; font-weight: 800; padding: 2px 7px; border-radius: 99px; background: rgba(150,214,0,0.12); color: var(--ep-lime-dk); white-space: nowrap; }
-.ai-chevron { font-size: 12px; color: var(--ep-muted); transition: transform 0.22s; flex-shrink: 0; }
+.ai-chip-mini { font-size: 9px; font-weight: 800; padding: 3px 9px; border-radius: 99px; background: var(--ep-green-lt); color: var(--ep-green); white-space: nowrap; }
+.ai-chevron { font-size: 14px; color: var(--ep-muted); transition: transform 0.22s; flex-shrink: 0; }
 .ai-chevron.open { transform: rotate(180deg); }
-.ai-body { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
-.ai-body.open { max-height: 600px; }
-.comp-sliders-wrap { padding: 2px 14px 10px; border-bottom: 1px solid var(--ep-border); }
-.cslider-row { padding: 4px 0; }
-.cslider-lrow { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
-.cslider-icon { font-size: 11px; }
-.cslider-name { font-size: 11px; font-weight: 700; color: var(--ep-text); flex: 1; }
-.cslider-val { font-size: 9px; font-weight: 800; color: var(--ep-muted); min-width: 70px; text-align: right; }
-.cslider-val.lit { color: var(--ep-lime-dk); }
-.verdict-wrap { padding: 10px 14px 12px; }
-.verdict-card { border-radius: var(--radius-md); padding: 12px 13px; border-left: 4px solid var(--ep-lime); background: rgba(150,214,0,0.05); border-top: 1px solid rgba(150,214,0,0.18); border-right: 1px solid rgba(150,214,0,0.18); border-bottom: 1px solid rgba(150,214,0,0.18); }
-.verdict-bar { display: flex; align-items: center; gap: 7px; margin-bottom: 9px; }
-.verdict-bar-lbl { font-size: 8.5px; font-weight: 800; color: var(--ep-muted); white-space: nowrap; }
-.verdict-track { flex: 1; height: 5px; background: var(--ep-border); border-radius: 2px; overflow: hidden; display: flex; }
+.ai-body { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+.ai-body.open { max-height: 800px; }
+.comp-sliders-wrap { padding: 8px 16px 14px; }
+.cslider-row { padding: 6px 0; }
+.cslider-lrow { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.cslider-icon { display: none; }
+.cslider-name { font-size: 13px; font-weight: 800; color: var(--ep-navy); flex: 1; }
+.cslider-val { font-size: 10px; font-weight: 700; color: var(--ep-green); min-width: 80px; text-align: right; }
+.cslider-val.lit { color: var(--ep-green); }
+.verdict-wrap { padding: 14px 16px 16px; border-top: 1px solid var(--ep-border); }
+.verdict-card { border-radius: var(--radius-md); padding: 16px; border-left: 4px solid var(--ep-green); background: var(--ep-surface); border-top: 1px solid var(--ep-border); border-right: 1px solid var(--ep-border); border-bottom: 1px solid var(--ep-border); }
+.verdict-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.verdict-bar-lbl { font-size: 9px; font-weight: 800; color: var(--ep-text2); white-space: nowrap; }
+.verdict-track { flex: 1; height: 6px; background: var(--ep-border); border-radius: 3px; overflow: hidden; display: flex; }
 .vbar-l { height: 100%; transition: width 0.4s ease; }
 .vbar-r { flex: 1; height: 100%; }
-.verdict-ttl { font-size: 9.5px; font-weight: 900; color: var(--ep-text); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
-.verdict-lines p { font-size: 11.5px; line-height: 1.58; margin-bottom: 3px; color: var(--ep-text2); }
-.verdict-lines p.bold { font-weight: 800; color: var(--ep-text); }
+.verdict-ttl { font-size: 14px; font-weight: 900; color: var(--ep-navy); text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
+.verdict-lines p { font-size: 12px; line-height: 1.6; margin-bottom: 4px; color: var(--ep-text2); }
+.verdict-lines p.bold { font-weight: 800; color: var(--ep-navy); font-size: 13px; }
 
 /* SPEC ROWS */
 .spec-scroll { flex: 1; overflow-y: auto; background: var(--ep-white); }
@@ -287,7 +287,7 @@ input[type=range].epslider::-moz-range-thumb { width: 20px; height: 20px; border
   </div>
   <div class="prio-body" id="prio-body"><div class="prio-section-lbl">My Priorities</div></div>
   <div class="gen-btn-wrap">
-    <button class="gen-btn" onclick="goStep('comparison')">&#9733; Generate My Assessment</button>
+    <button class="gen-btn" onclick="goStep('comparison')">Generate My Assessment</button>
   </div>
 </div>
 
@@ -303,7 +303,7 @@ input[type=range].epslider::-moz-range-thumb { width: 20px; height: 20px; border
   <div class="ai-summary-wrap">
     <button class="ai-toggle-btn" onclick="toggleAI()">
       <div class="ai-toggle-accent"></div>
-      <span class="ai-toggle-label">AUI &middot; AI Summary</span>
+      <span class="ai-toggle-label">AI Summary</span>
       <div class="ai-toggle-chips" id="ai-chips"></div>
       <span class="ai-chevron open" id="ai-chev">&#9662;</span>
     </button>
@@ -349,13 +349,13 @@ input[type=range].epslider::-moz-range-thumb { width: 20px; height: 20px; border
 <script>
 const VLABELS=['Less Important','Somewhat','Neutral','Important','Most Important'];
 const PRIOS=[
-  {key:'price',label:'Price',icon:'&#128176;'},
-  {key:'safety',label:'Safety',icon:'&#128737;&#65039;'},
-  {key:'mpg',label:'Fuel Economy',icon:'&#9981;'},
-  {key:'value',label:'Overall Value',icon:'&#11088;'},
-  {key:'storage',label:'Storage',icon:'&#128230;'},
+  {key:'price',label:'Price',icon:''},
+  {key:'safety',label:'Safety',icon:''},
+  {key:'mpg',label:'Fuel Economy',icon:''},
+  {key:'value',label:'Overall Value',icon:''},
+  {key:'storage',label:'Storage',icon:''},
 ];
-const ICONS={SUV:'&#128665;',Sedan:'&#128663;',Truck:'&#128667;',Hatchback:'&#128664;',Coupe:'&#127950;&#65039;'};
+const ICONS={SUV:'',Sedan:'',Truck:'',Hatchback:'',Coupe:''};
 
 let INV = [];
 let sel=[null,null],wts={price:2,safety:2,mpg:2,value:2,storage:2},curF='All',aiOpen=true,chatReady=false;
@@ -386,17 +386,16 @@ function goStep(id){
 }
 
 function thumb(v,cls,h){
-  const icon = ICONS[v.body]||'&#128663;';
   const phCls = cls.replace('thumb','thumb-ph');
-  if(!v.img) return '<div class="'+phCls+'">'+icon+'</div>';
-  return '<img src="'+v.img+'" class="'+cls+'" loading="lazy" onerror="this.style.display=\'none\';this.parentNode.insertAdjacentHTML(\'beforeend\',\'<div class=&quot;'+phCls+'&quot;>'+icon+'</div>\')">';
+  if(!v.img) return '<div class="'+phCls+'">No Image</div>';
+  return '<img src="'+v.img+'" class="'+cls+'" loading="lazy" onerror="this.style.display=\'none\';this.parentNode.insertAdjacentHTML(\'beforeend\',\'<div class=&quot;'+phCls+'&quot;>No Image</div>\')">';
 }
 
 function badgeHTML(b){
-  if(b==='great_deal') return '<span class="vbadge vb-deal">&#10003; Great Deal</span>';
-  if(b==='good_deal')  return '<span class="vbadge vb-deal">&#10003; Good Deal</span>';
-  if(b==='hot_car')    return '<span class="vbadge vb-hot">&#128293; Hot Car</span>';
-  if(b==='price_drop') return '<span class="vbadge vb-drop">&#8595; Price Drop</span>';
+  if(b==='great_deal') return '<span class="vbadge vb-deal">Great Deal</span>';
+  if(b==='good_deal')  return '<span class="vbadge vb-deal">Good Deal</span>';
+  if(b==='hot_car')    return '<span class="vbadge vb-hot">Hot Car</span>';
+  if(b==='price_drop') return '<span class="vbadge vb-drop">Price Drop</span>';
   return '';
 }
 
@@ -488,7 +487,7 @@ function renderVerdict(){
   const[v1,v2]=sel,res=computeResult();if(!res)return;
   const lines=buildVerdictLines(v1,v2,res),tot=res.p1+res.p2,lp=Math.round(res.p1/tot*100);
   const v1w=res.winner==='v1',v2w=res.winner==='v2';
-  $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-bar"><span class="verdict-bar-lbl">'+v1.make+'</span><div class="verdict-track"><div class="vbar-l" style="width:'+lp+'%;background:'+(v1w?'var(--ep-green)':'#C8D5E0')+'"></div><div class="vbar-r" style="background:'+(v2w?'var(--ep-green)':'var(--ep-border)')+'"></div></div><span class="verdict-bar-lbl">'+v2.make+'</span></div><div class="verdict-ttl">'+(res.winner==='tie'?'&#129309;':'&#127942;')+' EchoPark AI Verdict</div><div class="verdict-lines">'+lines.map((l,i)=>'<p '+(i===0?'class="bold"':'')+'>'+l+'</p>').join('')+'</div></div>';
+  $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-bar"><span class="verdict-bar-lbl">'+v1.make+'</span><div class="verdict-track"><div class="vbar-l" style="width:'+lp+'%;background:'+(v1w?'var(--ep-green)':'#C8D5E0')+'"></div><div class="vbar-r" style="background:'+(v2w?'var(--ep-green)':'var(--ep-border)')+'"></div></div><span class="verdict-bar-lbl">'+v2.make+'</span></div><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-lines">'+lines.map((l,i)=>'<p '+(i===0?'class="bold"':'')+'>'+l+'</p>').join('')+'</div></div>';
 }
 
 function renderCompHeader(){
@@ -516,7 +515,7 @@ function updComp(key,val,el){
 function updateAIChips(){
   const res=computeResult();if(!res)return;
   const w=res.winner==='v1'?sel[0]:res.winner==='v2'?sel[1]:null;
-  $('ai-chips').innerHTML=w?'<span class="ai-chip-mini">&#9733; '+w.make+' '+w.model+'</span>':'';
+  $('ai-chips').innerHTML=w?'<span class="ai-chip-mini">'+w.make+' '+w.model+'</span>':'';
 }
 
 function toggleAI(){
