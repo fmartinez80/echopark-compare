@@ -55,7 +55,6 @@ app.post('/api/recommend', async (req, res) => {
     return Math.round(v.miles / age);
   };
   const segmentAvgMpg = { Sedan: 30, SUV: 26, Truck: 21, Coupe: 24, Hatchback: 30 };
-  const segmentAvgHp = { Sedan: 180, SUV: 190, Truck: 270, Coupe: 300, Hatchback: 170 };
 
   const formatVehicle = (v) => {
     const milesPerYear = calcMilesPerYear(v);
