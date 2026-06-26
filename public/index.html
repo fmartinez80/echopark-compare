@@ -523,12 +523,20 @@ async function fetchRecommendation(v1,v2,winnerName){
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({vehicle1:v1,vehicle2:v2,priorities:wts})
     });
-    if(!resp.ok)throw new Error('API error');
+    if(!resp.ok){
+      const errData=await resp.json().catch(()=>({}));
+      console.error('Recommend API error:',resp.status,errData);
+      throw new Error(errData.message||'API error '+resp.status);
+    }
     const data=await resp.json();
     $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-winner">'+winnerName+'</div><div class="verdict-lines"><p>'+data.recommendation+'</p></div></div>';
   }catch(e){
     console.error('Recommendation failed:',e);
-    $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-winner">'+winnerName+'</div><div class="verdict-lines"><p>Adjust the priority sliders above to refine your comparison.</p></div></div>';
+    const top=[...PRIOS].sort((a,b)=>wts[b.key]-wts[a.key])[0];
+    const winner=sel[0]&&sel[1]?computeResult():null;
+    const w=winner&&winner.winner==='v1'?sel[0]:winner&&winner.winner==='v2'?sel[1]:null;
+    const fallback=w?'The '+w.year+' '+w.make+' '+w.model+' leads on '+top.label.toLowerCase()+' based on your priorities. Adjust the sliders to explore different trade-offs.':'Both vehicles score evenly. Adjust a priority slider above to break the tie.';
+    $('verdict-wrap').innerHTML='<div class="verdict-card"><div class="verdict-ttl">Echo Park Recommends...</div><div class="verdict-winner">'+winnerName+'</div><div class="verdict-lines"><p>'+fallback+'</p></div></div>';
   }
 }
 
