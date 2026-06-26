@@ -49,19 +49,37 @@ app.post('/api/recommend', async (req, res) => {
     return res.status(400).json({ error: 'vehicle1, vehicle2, and priorities are required' });
   }
 
-  const formatVehicle = (v) => `
+  const currentYear = new Date().getFullYear();
+  const calcMilesPerYear = (v) => {
+    const age = Math.max(currentYear - v.year, 1);
+    return Math.round(v.miles / age);
+  };
+  const segmentAvgMpg = { Sedan: 30, SUV: 26, Truck: 21, Coupe: 24, Hatchback: 30 };
+  const segmentAvgHp = { Sedan: 180, SUV: 190, Truck: 270, Coupe: 300, Hatchback: 170 };
+
+  const formatVehicle = (v) => {
+    const milesPerYear = calcMilesPerYear(v);
+    const belowAvgMiles = milesPerYear < 10000;
+    const segMpg = segmentAvgMpg[v.body] || 26;
+    const aboveAvgMpg = v.mpg > segMpg;
+    const priceBelowMarket = v.marketAvg ? v.price < v.marketAvg : false;
+    const priceSavings = v.marketAvg ? v.marketAvg - v.price : 0;
+
+    return `
 ${v.year} ${v.make} ${v.model} ${v.trim}
-- Price: $${v.price.toLocaleString()}
-- Mileage: ${v.miles.toLocaleString()} miles
+- Price: $${v.price.toLocaleString()}${priceBelowMarket ? ` ($${priceSavings.toLocaleString()} below market average of $${v.marketAvg.toLocaleString()})` : ''}
+- Mileage: ${v.miles.toLocaleString()} miles (${milesPerYear.toLocaleString()}/yr${belowAvgMiles ? ' — below avg 12k/yr' : ''})
 - Drivetrain: ${v.drive}
 - Body Style: ${v.body}
-- Exterior Color: ${v.color}
-- Fuel Economy: ${v.mpg} MPG
+- Fuel Economy: ${v.mpg} MPG${aboveAvgMpg ? ` (above ${v.body} avg of ${segMpg})` : ''}
 - Horsepower: ${v.hp} HP
 - Cargo Space: ${v.cargo} cu.ft.
 - Factory Warranty: ${v.warr ? 'Active' : 'Expired'}
-- Badges: ${v.badges.length ? v.badges.join(', ') : 'None'}
+- NHTSA Safety Rating: ${v.nhtsaRating ? v.nhtsaRating + '/5 stars' : 'Not available'}
+- Carfax: ${v.carfax ? `${v.carfax.owners} owner${v.carfax.owners > 1 ? 's' : ''}, ${v.carfax.accidentFree ? 'no accidents reported' : 'accident reported'}` : 'Not available'}
+- EchoPark Badges: ${v.badges.length ? v.badges.map(b => b.replace(/_/g, ' ')).join(', ') : 'None'}
 - VIN: ${v.vin}`;
+  };
 
   const priorityLabels = { price: 'Price', safety: 'Safety', mpg: 'Fuel Economy', storage: 'Storage' };
   const weightLabels = ['Less Important', 'Somewhat', 'Neutral', 'Important', 'Most Important'];
@@ -77,14 +95,21 @@ Rules:
 - Do NOT start with "Based on your priorities" or similar. Jump straight into the recommendation.
 - Always name the specific vehicle you recommend by year, make, and model.
 - Do not use emojis, asterisks, em dashes, or markdown formatting.
-- Do not use phrases like: "game changer," "at the end of the day," "dive into," "delve into," "it's worth noting," "the bottom line is," "the good news is," or similar filler.
-- Do not use metaphors or bullet points.
+- Do not use filler phrases. Do not use metaphors or bullet points.
 - Do not pad the response. If the answer is short, the response should be short.
 - Lead with the facts. Let the numbers speak. State advantages plainly.
 - Do not open with affirmations like "Great question" or "Absolutely."
-- Do not speculate beyond what the vehicle data confirms.`;
+- Do not speculate beyond what the vehicle data confirms.
 
-  const userMsg = `Compare these two vehicles for a customer. Consider ALL vehicle details but weight your recommendation according to the customer's priorities.
+Highlight above-average conditions when present:
+- If a vehicle has significantly low miles per year (under 10k/yr vs the 12k avg), call it out as low-mileage.
+- If fuel economy exceeds the segment average, note it as above-average efficiency.
+- If priced below market average, state the dollar savings vs market.
+- If NHTSA rating is 5 stars, reference the top safety rating.
+- If Carfax shows single-owner and accident-free, mention the clean history.
+- Only state these when the data explicitly supports them. Never infer or assume.`;
+
+  const userMsg = `Compare these two vehicles for a customer. Consider ALL vehicle details but weight your recommendation according to the customer's priorities. Highlight any standout conditions (below-market pricing, low mileage, top safety rating, clean Carfax) when they strengthen the recommendation.
 
 VEHICLE 1:${formatVehicle(vehicle1)}
 

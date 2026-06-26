@@ -541,16 +541,33 @@ async function fetchRecommendation(v1,v2,winnerName){
 function buildFallbackText(v1,v2){
   const res=computeResult();
   const priceDiff=Math.abs(v1.price-v2.price);
-  const cheaper=v1.price<v2.price?v1:v2;
-  const mpgBetter=v1.mpg>v2.mpg?v1:v2;
-  const cargoBetter=v1.cargo>v2.cargo?v1:v2;
+  const curYr=new Date().getFullYear();
+  const mpy=(v)=>Math.round(v.miles/Math.max(curYr-v.year,1));
+  const segMpg={Sedan:30,SUV:26,Truck:21,Coupe:24,Hatchback:30};
+
+  function highlights(v){
+    const h=[];
+    if(v.marketAvg&&v.price<v.marketAvg)h.push('priced $'+(v.marketAvg-v.price).toLocaleString()+' below market average');
+    if(mpy(v)<10000)h.push('low mileage at '+mpy(v).toLocaleString()+'/yr vs the 12k average');
+    if(v.mpg>(segMpg[v.body]||26))h.push(v.mpg+' MPG, above the '+v.body.toLowerCase()+' average');
+    if(v.nhtsaRating===5)h.push('top NHTSA 5-star safety rating');
+    if(v.carfax&&v.carfax.owners===1&&v.carfax.accidentFree)h.push('single-owner, accident-free Carfax');
+    if(v.warr)h.push('active factory warranty');
+    return h;
+  }
+
   if(res&&res.winner==='v1'){
-    return 'The '+v1.year+' '+v1.make+' '+v1.model+' comes in at '+fmt(v1.price)+' with '+v1.mpg+' MPG and '+fmtM(v1.miles)+' on the odometer. It saves you $'+priceDiff.toLocaleString()+' over the '+v2.model+(v1.warr?' and still carries an active factory warranty':'')+'.';
+    const h=highlights(v1);
+    const detail=h.length?h.slice(0,3).join(', '):'strong overall value';
+    return 'The '+v1.year+' '+v1.make+' '+v1.model+' stands out with '+detail+'. It saves you $'+priceDiff.toLocaleString()+' over the '+v2.model+'.';
   }
   if(res&&res.winner==='v2'){
-    return 'The '+v2.year+' '+v2.make+' '+v2.model+' offers '+v2.drive+' capability with '+v2.cargo+' cu.ft. of cargo and '+v2.hp+' HP. '+( v2.price>v1.price?'It comes in at a higher price point ($'+priceDiff.toLocaleString()+' more) but delivers on performance and utility.':'At '+fmt(v2.price)+' it represents strong value for what you get.');
+    const h=highlights(v2);
+    const detail=h.length?h.slice(0,3).join(', '):v2.drive+' capability with '+v2.hp+' HP';
+    return 'The '+v2.year+' '+v2.make+' '+v2.model+' leads with '+detail+'.'+(v2.price>v1.price?' It comes in $'+priceDiff.toLocaleString()+' higher but delivers on what matters to you.':'');
   }
-  return 'These two vehicles serve different needs. The '+v1.model+' delivers '+v1.mpg+' MPG and a lower price at '+fmt(v1.price)+', while the '+v2.model+' brings '+v2.drive+', '+v2.cargo+' cu.ft. of cargo, and '+v2.hp+' HP. Neither has a decisive edge across all categories.';
+  const h1=highlights(v1),h2=highlights(v2);
+  return 'These two serve different needs. The '+v1.model+(h1.length?' offers '+h1[0]:' is the more affordable option')+', while the '+v2.model+(h2.length?' brings '+h2[0]:' provides more utility')+'. Neither has a decisive edge across all categories.';
 }
 
 function renderVehiclesBelow(){

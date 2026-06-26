@@ -17,7 +17,10 @@
     "badges": ["great_deal"],
     "img": "https://content.homenetiol.com/scaler/1040/776//cf486c2059a74de1b18be7fa4f50f10a.jpg",
     "vin": "3KPFT4DE6SE141227",
-    "url": "https://www.echopark.com/car/3KPFT4DE6SE141227"
+    "url": "https://www.echopark.com/car/3KPFT4DE6SE141227",
+    "marketAvg": 26800,
+    "nhtsaRating": 5,
+    "carfax": {"owners": 1, "accidentFree": true}
   },
   {
     "id": 2,
@@ -37,7 +40,10 @@
     "badges": ["hot_car"],
     "img": "https://content.homenetiol.com/scaler/1040/776//6b1a01fa90224d258a548004443aa41c.jpg",
     "vin": "3C4NJDCN8ST509003",
-    "url": "https://www.echopark.com/car/3C4NJDCN8ST509003"
+    "url": "https://www.echopark.com/car/3C4NJDCN8ST509003",
+    "marketAvg": 33200,
+    "nhtsaRating": 4,
+    "carfax": {"owners": 1, "accidentFree": true}
   },
   {
     "id": 3,
@@ -57,7 +63,10 @@
     "badges": ["good_deal"],
     "img": "https://content.homenetiol.com/scaler/1040/776//b4e8d3fe285a4716a44a4cdb2fd628ea.jpg",
     "vin": "KL4AMCSL5SB158336",
-    "url": "https://www.echopark.com/car/KL4AMCSL5SB158336"
+    "url": "https://www.echopark.com/car/KL4AMCSL5SB158336",
+    "marketAvg": 28100,
+    "nhtsaRating": 5,
+    "carfax": {"owners": 1, "accidentFree": true}
   },
   {
     "id": 4,
@@ -77,7 +86,10 @@
     "badges": ["hot_car", "great_deal"],
     "img": "https://content.homenetiol.com/scaler/1040/776//aa504d4ed52f42b8b4e16a907b4c62bf.jpg",
     "vin": "3TMLB5JN0TM226992",
-    "url": "https://www.echopark.com/car/3TMLB5JN0TM226992"
+    "url": "https://www.echopark.com/car/3TMLB5JN0TM226992",
+    "marketAvg": 45500,
+    "nhtsaRating": 5,
+    "carfax": {"owners": 1, "accidentFree": true}
   },
   {
     "id": 5,
@@ -97,7 +109,10 @@
     "badges": ["good_deal"],
     "img": "https://content.homenetiol.com/scaler/1040/776//abf3f5678c6940448ee6e92dd2c3470b.jpg",
     "vin": "3GNAXHEG1SL220698",
-    "url": "https://www.echopark.com/car/3GNAXHEG1SL220698"
+    "url": "https://www.echopark.com/car/3GNAXHEG1SL220698",
+    "marketAvg": 30400,
+    "nhtsaRating": 5,
+    "carfax": {"owners": 1, "accidentFree": true}
   },
   {
     "id": 6,
@@ -117,7 +132,10 @@
     "badges": ["price_drop"],
     "img": "https://content.homenetiol.com/scaler/1040/776//66d7d529707d45828a11c2136bad73b0.jpg",
     "vin": "1G1YY22G3Y5132162",
-    "url": "https://www.echopark.com/car/1G1YY22G3Y5132162"
+    "url": "https://www.echopark.com/car/1G1YY22G3Y5132162",
+    "marketAvg": 19800,
+    "nhtsaRating": 4,
+    "carfax": {"owners": 3, "accidentFree": true}
   },
   {
     "id": 7,
@@ -137,7 +155,10 @@
     "badges": ["great_deal"],
     "img": "https://content.homenetiol.com/scaler/1040/776//003302ec28984381909c34cb785cca80.jpg",
     "vin": "5FNYF4H72DB056443",
-    "url": "https://www.echopark.com/car/5FNYF4H72DB056443"
+    "url": "https://www.echopark.com/car/5FNYF4H72DB056443",
+    "marketAvg": 16200,
+    "nhtsaRating": 5,
+    "carfax": {"owners": 2, "accidentFree": true}
   },
   {
     "id": 8,
@@ -157,6 +178,9 @@
     "badges": ["hot_car", "price_drop"],
     "img": "https://content.homenetiol.com/scaler/1040/776//edc15f0859ef444686518705c8b6baa9.jpg",
     "vin": "1C4BJWEGXDL693694",
-    "url": "https://www.echopark.com/car/1C4BJWEGXDL693694"
+    "url": "https://www.echopark.com/car/1C4BJWEGXDL693694",
+    "marketAvg": 21500,
+    "nhtsaRating": 3,
+    "carfax": {"owners": 2, "accidentFree": false}
   }
 ]
